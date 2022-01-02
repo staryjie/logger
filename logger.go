@@ -15,6 +15,7 @@ func InitLogger(name string, config map[string]string) (err error) {
 	case "file":
 		log, err = NewFileLogger(config)
 	case "console":
+		fmt.Println("Console ....")
 		log, err = NewConsoleLogger(config)
 	default:
 		err = fmt.Errorf("unsupport logger name:%s", name)

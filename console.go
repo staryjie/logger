@@ -20,6 +20,7 @@ func NewConsoleLogger(config map[string]string) (log LogInterface, err error) {
 	log = &ConsoleLogger{
 		level: level,
 	}
+	fmt.Println(config)
 	return
 }
 
