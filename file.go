@@ -83,12 +83,11 @@ func NewFileLogger(config map[string]string) (log LogInterface, err error) {
 		lastSplitHour: time.Now().Hour(),
 	}
 	log.Init()
-	fmt.Println(logSplitType, logSplitSize, logSplitStr)
+	fmt.Printf("logSplitTpye: %s\nlogSpliteSize: %d\nlogSplitStr: %s\n", logSplitType, logSplitSize, logSplitStr)
 	return
 }
 
 func (f *FileLogger) Init() {
-
 	filename := fmt.Sprintf("%s/%s.log", f.logPath, f.logName)
 	file, err := os.OpenFile(filename, os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0755)
 	if err != nil {
