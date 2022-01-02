@@ -23,7 +23,7 @@ func initLogger(name, logPath, logName, level, split_type string) (err error) {
 	config["log_name"] = logName
 	config["log_level"] = level
 	config["log_split_type"] = split_type
-	err = logger.InitLogger("file", config)
+	err = logger.InitLogger(name, config)
 	if err != nil {
 		return
 	}
