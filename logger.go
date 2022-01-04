@@ -23,6 +23,8 @@ func InitLogger(name string, config map[string]string) (err error) {
 	return
 }
 
+
+// 易用性代码，方便用户直接通过logger来调用下面的方法
 func Debug(format string, args ...interface{}) {
 	log.Debug(format, args...)
 }

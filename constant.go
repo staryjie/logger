@@ -1,5 +1,6 @@
 package logger
 
+// 通过iota和常量定义日志级别
 const (
 	LogLevelDebug = iota
 	LogLevelTrace
@@ -15,6 +16,7 @@ const (
 	LogSplitTypeSize
 )
 
+// 通过int类型的日志级别获取对应的字符串
 func getLevelText(level int) string {
 	switch level {
 	case LogLevelDebug:
@@ -33,6 +35,7 @@ func getLevelText(level int) string {
 	return "UNKNOWN"
 }
 
+// 通过字符串形式的日志级别获取int类型的日志级别
 func getLogLevel(level string) int {
 	switch level {
 	case "debug":

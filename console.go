@@ -9,6 +9,8 @@ type ConsoleLogger struct {
 	level int
 }
 
+
+// 构造函数，返回一个LogInterface类型的实例或者错误
 func NewConsoleLogger(config map[string]string) (log LogInterface, err error) {
 	logLevel, ok := config["log_level"]
 	if !ok {

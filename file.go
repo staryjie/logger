@@ -20,6 +20,7 @@ type FileLogger struct {
 	lastSplitHour int           // 上次切分日志的小时
 }
 
+// 构造函数，返回一个LogInterface类型的实例或者错误
 func NewFileLogger(config map[string]string) (log LogInterface, err error) {
 	logPath, ok := config["log_path"]
 	if !ok {
@@ -48,9 +49,9 @@ func NewFileLogger(config map[string]string) (log LogInterface, err error) {
 	var logSplitSize int64
 	logSplitStr, ok := config["log_split_type"]
 	if !ok {
-		logSplitStr = "hour"
+		logSplitStr = "hour"  // 日志按小时切分
 	} else {
-		if logSplitStr == "size" {
+		if logSplitStr == "size" { // 日志按文件大小切分
 			logSplitSizeStr, ok := config["log_split_size"]
 			if !ok {
 				logSplitSizeStr = "104857600" // 默认100M
@@ -107,6 +108,7 @@ func (f *FileLogger) Init() {
 	go f.writeLogBackground() // 启动一个线程，将日志队列中的日志写入文件
 }
 
+// 日志按小时切分的函数实现
 func (f *FileLogger) splitFileHour(warnFile bool) {
 	now := time.Now()
 	hour := now.Hour()
@@ -150,6 +152,7 @@ func (f *FileLogger) splitFileHour(warnFile bool) {
 	}
 }
 
+// 日志按大小切分的函数实现
 func (f *FileLogger) splitFileSize(warnFile bool) {
 
 	file := f.file
